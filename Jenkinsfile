@@ -7,7 +7,7 @@ pipeline {
 			
 				deleteDir()
 				git(url: 'https://github.com/meetdpv/spring-petclinic.git', branch: 'master')
-            	sh([script:"${tool 'ADOP Maven'}/bin/mvn clean install -DskipTests"])
+            	sh([script:"${tool 'M3'}/bin/mvn clean install -DskipTests"])
 			
       	}
     }
