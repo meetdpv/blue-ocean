@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Unit_Tests_ST') {
       steps {
-		{
+		node(label: 'java8') {
         	echo 'Build Number: ' + env.BUILD_NUMBER
 			sh([script:"${tool 'ADOP Maven'}/bin/mvn test"])
 			archiveArtifacts artifacts: '**/*' 
@@ -28,7 +28,7 @@ pipeline {
     }
     stage('Deploy_Environment_ST') {
       steps {
-		{
+		
 			echo 'Build Number: ' + env.BUILD_NUMBER
 						
 			sh '''echo "
@@ -39,19 +39,19 @@ pipeline {
 			docker build -t ${REPO_NAME}/adop-foss-java:0.0.${BUILD_NUMBER} .
 			echo "New image has been build - ${REPO_NAME}/adop-foss-java:0.0.${BUILD_NUMBER}"'''
 
-		}
+		
       }
     }
     stage('Test_Build_ST') {
       steps {
-		{
+		
 			git(url: 'http://52.19.50.152/gerrit/BlueOceanProject', branch: 'master', credentialsId: 'f8e5a0d0-b489-4884-ace9-a74149ba8a30')
 			bat([script:"${tool 'ADOP Maven'}/bin/mvn clean compile install -DskipTests"])
-		}
+		
       }
     }
 	stage('Continuous_Testing_ST') {
-	agent any
+
 	steps {
 	  parallel(
 		"01-Functional": {
