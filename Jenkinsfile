@@ -6,7 +6,7 @@ pipeline {
 			echo 'Build Number: ' + env.BUILD_NUMBER
 			
 				deleteDir()
-				git(url: 'http://52.19.50.152/gerrit/ExampleWorkspace/ExampleProject/spring-petclinic', branch: 'master', credentialsId: 'f8e5a0d0-b489-4884-ace9-a74149ba8a30')
+				git(url: 'https://github.com/meetdpv/spring-petclinic.git', branch: 'master')
             	sh([script:"${tool 'ADOP Maven'}/bin/mvn clean install -DskipTests"])
 			
       	}
