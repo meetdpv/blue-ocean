@@ -13,11 +13,11 @@ pipeline {
     }
     stage('Unit_Tests_ST') {
       steps {
-		node(label: 'java8') {
+		
         	echo 'Build Number: ' + env.BUILD_NUMBER
 			sh([script:"${tool 'ADOP Maven'}/bin/mvn test"])
 			archiveArtifacts artifacts: '**/*' 
-		}
+		
       }
     }
     stage('Code_Analysis_ST') {
