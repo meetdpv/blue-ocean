@@ -52,7 +52,7 @@ pipeline {
     }
 	stage('Continuous_Testing_ST') {
 	agent {
-		node { label 'All_NT' }
+		#node { label 'All_NT' }
 		}
 	steps {
 	  parallel(
