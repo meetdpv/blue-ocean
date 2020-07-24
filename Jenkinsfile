@@ -51,9 +51,7 @@ pipeline {
       }
     }
 	stage('Continuous_Testing_ST') {
-	agent {
-		any
-		}
+	agent any
 	steps {
 	  parallel(
 		"01-Functional": {
