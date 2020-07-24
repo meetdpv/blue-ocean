@@ -4,11 +4,11 @@ pipeline {
     stage('App_Build_ST') {
         steps {
 			echo 'Build Number: ' + env.BUILD_NUMBER
-			node(label: 'java8') {
+			
 				deleteDir()
 				git(url: 'http://52.19.50.152/gerrit/ExampleWorkspace/ExampleProject/spring-petclinic', branch: 'master', credentialsId: 'f8e5a0d0-b489-4884-ace9-a74149ba8a30')
             	sh([script:"${tool 'ADOP Maven'}/bin/mvn clean install -DskipTests"])
-			}
+			
       	}
     }
     stage('Unit_Tests_ST') {
