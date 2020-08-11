@@ -45,7 +45,7 @@ pipeline {
     stage('Test_Build_ST') {
       steps {
 		
-			git(url: 'http://52.19.50.152/gerrit/BlueOceanProject', branch: 'master', credentialsId: 'f8e5a0d0-b489-4884-ace9-a74149ba8a30')
+			git(url: 'https://github.com/meetdpv/blueocean', branch: 'master')
 			bat([script:"${tool 'M3'}/bin/mvn clean compile install -DskipTests"])
 		
       }
