@@ -23,7 +23,7 @@ pipeline {
     stage('Code_Analysis_ST') {
       steps {
 			echo 'Build Number: ' + env.BUILD_NUMBER
-			build job: 'Extra_Jobs/Sonar_Code_Analysis', parameters: [string(name: 'B', value: BUILD_NUMBER)]
+
 		}
     }
     stage('Deploy_Environment_ST') {
